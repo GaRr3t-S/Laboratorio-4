@@ -1,7 +1,15 @@
+//Universidad del valle Guatemala
+// Gabriel Soto
+//23900
+
+//librerias
 import java.io.*;
 import java.util.*;
 
+
 public class Main {
+
+    //variables de archivos + scanner y usuario
     private static final String USUARIOS_CSV = "usuarios.csv";
     private static final String RESERVAS_CSV = "reservas.csv";
     private static Scanner scanner = new Scanner(System.in);
@@ -26,12 +34,14 @@ public class Main {
         }
     }
 
+    //registro e inicio de sesión
     private static void mostrarMenuInicial() {
         System.out.println("1. Registrar Usuario");
         System.out.println("2. Iniciar Sesión");
         System.out.print("Selecciona una opción: ");
     }
 
+    //opcion crear usuario
     private static void registrarUsuario() {
         System.out.print("Ingrese nombre de usuario: ");
         String nombreUsuario = scanner.nextLine();
@@ -47,6 +57,7 @@ public class Main {
         System.out.println("Usuario registrado exitosamente.");
     }
 
+    //opcion inicio de sesion
     private static void iniciarSesion() {
         System.out.print("Ingrese nombre de usuario: ");
         String nombreUsuario = scanner.nextLine();
@@ -66,6 +77,7 @@ public class Main {
         }
     }
 
+    //Verificar datos de inicio de sesion
     private static Usuario verificarCredenciales(String nombreUsuario, String contraseña) {
         try (Scanner scannerUsuarios = new Scanner(new File(USUARIOS_CSV))) {
             while (scannerUsuarios.hasNextLine()) {
@@ -83,6 +95,7 @@ public class Main {
         return null;
     }
 
+    // menu para usuario premium
     private static void menuUsuarioPremium() {
         while (true) {
             mostrarMenuPremium();
@@ -116,6 +129,7 @@ public class Main {
         System.out.print("Selecciona una opción: ");
     }
 
+    //reserva 
     private static void realizarReserva() {
         System.out.print("Ingrese fecha de viaje (yyyy-MM-dd): ");
         String fechaViajeStr = scanner.nextLine();
@@ -138,6 +152,7 @@ public class Main {
         System.out.println("Reserva realizada exitosamente.");
     }
 
+    //confirmar reserva [no me salio :,(]
     private static void confirmarReserva() {
         List<Reserva> reservasPorConfirmar = obtenerReservasPorConfirmar();
 
@@ -201,6 +216,7 @@ public class Main {
         return reservasPorConfirmar;
     }
 
+    //cambio de contraseña
     private static void cambiarContraseña() {
         System.out.print("Ingrese nueva contraseña: ");
         String nuevaContraseña = scanner.nextLine();
@@ -210,6 +226,7 @@ public class Main {
         System.out.println("Contraseña cambiada exitosamente.");
     }
 
+    //csv
     private static void guardarUsuarioEnCSV(Usuario usuario) {
         try (PrintWriter writer = new PrintWriter(new FileWriter(USUARIOS_CSV, true))) {
             writer.println(usuario.getUsuario() + "," + usuario.getContraseña() + "," + (usuario.esPremium() ? "V" : "B"));
@@ -218,6 +235,7 @@ public class Main {
         }
     }
 
+    //csv
     private static void guardarReservaEnCSV(Reserva reserva) {
         try (PrintWriter writer = new PrintWriter(new FileWriter(RESERVAS_CSV, true))) {
             writer.println(reserva.getUsuario().getUsuario() + "," +
