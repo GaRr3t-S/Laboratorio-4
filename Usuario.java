@@ -13,7 +13,7 @@ public class Usuario {
             this.esPremium = esPremium;
         }
     
-        // Métodos getter
+        // getters
         public String getUsuario() {
             return usuario;
         }
