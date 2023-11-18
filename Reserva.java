@@ -1,4 +1,8 @@
-public class Reserva {
+//Universidad del valle Guatemala
+// Gabriel Soto
+//23900
+
+public class Reserva implements Premium {
     private String fechaViaje;
     private boolean esIdaYVuelta;
     private int cantidadBoletos;
@@ -40,5 +44,14 @@ public class Reserva {
         } else {
             return "La reserva no ha sido confirmada.";
         }
+
+    }
+
+    public int getMaletas() {
+        return cantidadMaletas;
+    }
+
+    public int getAsientos() {
+        return cantidadBoletos;
     }
 }

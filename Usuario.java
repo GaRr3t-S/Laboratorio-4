@@ -1,3 +1,7 @@
+//Universidad del valle Guatemala
+// Gabriel Soto
+//23900
+
 public class Usuario {
 
         private String name;
@@ -29,4 +33,6 @@ public class Usuario {
         public String getname() {
             return name;
         }
+
+        
     }
